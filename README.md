@@ -117,12 +117,35 @@ array: [ 2, 3, 3, "a" ],  sub:[ 3, 3, 3, "a" ] => false
 ### Questions
 
 1- Create an HTML file.
+
 2- Create a CSS file.
+
 3- link the CSS file to the HTML file.
+
 4- The page should have a header, body and footer.
+
 5- Change the background color of the body to be blue.
+
 6- Insert Three images next to each other.
+
 7- Create Two buttons and use different font family for each button.
+
 8- Create an unordered list with three anchor tags in it.
+
 9- Place In the footer a copyright claimer.
+
 10- Have Fun.
+
+## Tenth Warm Up
+
+### Questions
+
+1- Create an HTML, CSS, JS files and connect them together.
+
+2- Create a text field and a button below it in HTML file
+
+3- Create an empty unordered list  below the button
+
+4- Create two CSS classes, each with a different color property
+
+5- Using jQuery, create a function, that takes the input from the text field, creates a list item and add it to the unordered list, then add a class to the added item alternatively (So first time Class1 then next time Class2 then Class1 and repeat)

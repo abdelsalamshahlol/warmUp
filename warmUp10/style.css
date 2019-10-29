@@ -1,0 +1,35 @@
+.row {
+	display: flex;
+	flex-direction: column;
+}
+
+.col {
+	width: 50%;
+}
+
+.results {
+	background: orangered;
+	font-family: monospace;
+	font-size: 20px;
+	color: blue;
+}
+
+.inputs {
+	background: dodgerblue;
+	font-family: monospace;
+	font-size: 20px;
+	color: red;
+}
+
+input {
+	width: 100%;
+}
+
+button {
+	width: 100%;
+}
+
+fieldset > legend {
+	background: #fff;
+	border-radius: 5px 5px;
+}
