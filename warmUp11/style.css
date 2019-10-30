@@ -1,0 +1,30 @@
+body {
+	background: #0073aa;
+	font-family: monospace;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+	margin-top: 3rem;
+}
+
+.col {
+	width: 50%;
+	text-align: center;
+}
+
+.col-12 {
+	width: 100%
+}
+
+#left-list, #right-list {
+	color: #eee;
+	text-align: left;
+}
+
+button {
+	font-family: monospace;
+	background: #eee;
+	color: black;
+}
