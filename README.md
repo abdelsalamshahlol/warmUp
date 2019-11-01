@@ -201,4 +201,9 @@ Test Example:
 Technical Details
 
     - The maximum size of a range will be 100 integers
-    - The starting numb
+    - The starting number of a range will be: 0 < n < 100
+
+## Thirteen Warm Up
+
+### Questions
+
