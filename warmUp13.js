@@ -1,5 +1,6 @@
-/* 1. Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer.
-         You don't need to validate the form of the Roman numeral.
+/* 
+     1. Create a function that takes a Roman numeral as its argument and returns its
+        value as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
 
         Modern Roman numerals are written by expressing each decimal digit of the number
         to be encoded separately, starting with the leftmost digit and skipping any 0s.
@@ -21,9 +22,25 @@
             C          100
             D          500
             M          1,000 
-    */
+*/
 
-    /*
+function solution(str) {
+    var literals = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    };
+
+    return str.split('').reduce(function(acc, val) {
+        return acc + literals[val];
+    }, 0);
+}
+
+/*
     2. Complete the method/function so that it converts dash/underscore delimited words into camel casing.
        The first word within the output should be capitalized only if the original word was 
        capitalized (known as Upper Camel Case, also often referred to as Pascal case).
@@ -33,36 +50,27 @@
         toCamelCase("the-stealth-warrior") // returns "theStealthWarrior"
 
         toCamelCase("The_Stealth_Warrior") // returns "TheStealthWarrior"
-    */
+*/
 
-    function toCamelCase(str) {
-        var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        var delimter = str.includes('-') ? '-' : str.includes('_') ? '_' : undefined;
-        var keepUpper = upperCase.includes(str[0]);
-        var splitStr = str.split(delimter);
+function toCamelCase(str) {
+    var delimter = str.includes('-') ? '-' : '_';
+    var split = str.split(delimter);
 
-        if (keepUpper) {
-            return splitStr.map(function(word) {
-                return word[0].toUpperCase() + word.slice(1);
-            }).join('');
+    return split.map(function(word, i) {
+        if (i > 0) {
+            return word[0].toUpperCase() + word.slice(1);
         }
+        return word;
+    }).join('');
+}
 
-        return splitStr.map(function(word, i) {
-            var first = word[0];
-            if (i > 0) {
-                first = word[0].toUpperCase();
-            }
-            return first + word.slice(1);
-        }).join('');
-    }
+//  Assert that the function passes the test
+console.log(toCamelCase("the-stealth-warrior") === 'theStealthWarrior');
 
-    //  Assert that the function passes the test
-        console.log(toCamelCase("the-stealth-warrior") === 'theStealthWarrior');
+// returns "theStealthWarrior"
+console.log(toCamelCase("The_Stealth_Warrior") === 'TheStealthWarrior');
 
-    // returns "theStealthWarrior"
-        console.log(toCamelCase("The_Stealth_Warrior") === 'TheStealthWarrior');
-
-    /*
+/*
     3. In this kata you will create a function that takes a list of non-negative integers and 
         strings and returns a new list with the strings filtered out.
         Example
@@ -70,22 +78,19 @@
             console.log(filter_list([1,2,'a','b'])) == [1,2]
             console.log(filter_list([1,'a','b',0,15])) == [1,0,15]
             console.log(filter_list([1,2,'aasf','1','123',123])) == [1,2,123]
-    */
+*/
 
-    function filter_list(coll) {
-        var check = false;
+function filter_list(coll) {
+    //Check if there are any negative values in there
+    var check = coll.some(function(n) {
+        return n < 0;
+    });
 
-        //Check if there are any negative values in there
-        check = coll.some(function(n) {
-            return n < 0;
-        });
+    if (check) {
+        return 'Negative values are present in the collection';
+    }
 
-        if (check) {
-            return 'Negative values are present in the collection';
-        }
-
-        return coll.filter(function(val, key) {
-            console.log(val, typeof val === 'number')
-            return typeof val === 'number' ? val : null
-        });
+    return coll.filter(function(val, key) {
+        return typeof val === 'number';
+    });
 }
