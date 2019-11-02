@@ -1,7 +1,9 @@
 /*
 Say you have an array for which the i element is the price of a given stock on day i.
 
-If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+If you were only permitted to complete at most one transaction
+(i.e., buy one and sell one share of the stock), design an algorithm to find the
+maximum profit.
 
 Note that you cannot sell a stock before you buy one.
 
@@ -18,6 +20,53 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
+/*
+	==== Notes ====
+	- The the element at index = price
+	- The index of the price = day
+	- Max profit = Selling price - Buying price
+
+	|Day(i+1)|Price(elem)|
+	|1 + 1   |		1	 |
+	|4 + 1   |		6	 |
+	
+	==== Instructions ====
+
+	1- Find the lowest price and its index
+	2- Find the highest price and its index
+	3- Get the profit
+
+	==== Pseudocode ====   
+	
+
+*/
+
 var maxProfit = function(prices) {
-  // YOUR CODE HERE
+    var buyingPrice = {
+        price: prices[0],
+        day: prices.indexOf(prices[0])
+    }
+
+    var sellingPrice = {
+        price: 0,
+        day: 0
+    }
+
+    for (var i = 0; i < prices.length; i++) {
+        if (prices[i] < buyingPrice.price) {
+            buyingPrice.price = prices[i];
+            buyingPrice.day = i;
+        }
+        else  if (prices[i] > sellingPrice.price && i > buyingPrice.day) {
+            sellingPrice.price = prices[i];
+            sellingPrice.day = i;
+        }
+    }
+
+    return sellingPrice.price > buyingPrice.price ? sellingPrice.price - buyingPrice.price : 0;
 };
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7,6,4,3,1]));
+
+
