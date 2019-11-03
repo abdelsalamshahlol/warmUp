@@ -42,28 +42,26 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
 var maxProfit = function(prices) {
-    var buyingPrice = {
+    var buying = {
         price: prices[0],
         day: prices.indexOf(prices[0])
     }
-
-    var sellingPrice = {
+    var selling = {
         price: 0,
         day: 0
     }
 
     for (var i = 0; i < prices.length; i++) {
-        if (prices[i] < buyingPrice.price) {
-            buyingPrice.price = prices[i];
-            buyingPrice.day = i;
-        }
-        else  if (prices[i] > sellingPrice.price && i > buyingPrice.day) {
-            sellingPrice.price = prices[i];
-            sellingPrice.day = i;
+        if (prices[i] < buying.price) {
+            buying.price = prices[i];
+            buying.day = i + 1;
+        } else if (prices[i] > selling.price && i > buying.day) {
+            selling.price = prices[i];
+            selling.day = i + 1;
         }
     }
 
-    return sellingPrice.price > buyingPrice.price ? sellingPrice.price - buyingPrice.price : 0;
+    return selling.price > buying.price ? selling.price - buying.price : 0;
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));

@@ -169,40 +169,30 @@ array: [ 2, 3, 3, "a" ],  sub:[ 3, 3, 3, "a" ] => false
 ## Twelveth Warm Up
 
 ### Questions
-
 Your task is to write a function that returns the smallest and largest integers in an unsorted string.
-
-Input:
-```
-    //Your function will receive two arguments:
-
-      //  A string comprised of integers in an unknown range; these numbers will be out of order
-      //  An integer value representing the size of the range
-```
+Your function will receive two input arguments:
+ - A string comprised of integers in an unknown range; these numbers
+   will be out of order.
+ - An integer value representing the size of the range.
 
 Output:
-```
-    //Your function should return the starting (minimum) and ending (maximum) numbers of the range in the
-   // form of an array/list comprised of two integers.
-```
 
-Test Example:
-
+ - Your function should return the starting (minimum) and ending
+   (maximum) numbers of the range in the form of an array/list comprised
+   of two integers.
+   
 ```javascript
     let inputString = '1568141291110137';
-
     mysteryRange(inputString,10) // [6,15]
-
-       // -The 10 numbers in this string are:
-       // -15 6 8 14 12 9 11 10 13 7
-       // -Therefore the range of numbers is from 6 to 15
+    // -The 10 numbers in this string are:
+	// -15 6 8 14 12 9 11 10 13 7
+	// -Therefore the range of numbers is from 6 to 15
 ```
-
 Technical Details
+ - The maximum size of a range will be 100 integers
+ -  The starting number of a range will be: 0 < n < 100
 
-    - The maximum size of a range will be 100 integers
-    - The starting number of a range will be: 0 < n < 100
-
+    
 ## Thirteen Warm Up
 
 ### Questions
@@ -251,3 +241,34 @@ console.log(filter_list([1,2,'a','b'])) //=> [1,2]
 console.log(filter_list([1,'a','b',0,15])) //=> [1,0,15]
 console.log(filter_list([1,2,'aasf','1','123',123])) //=> [1,2,123]
 ```
+
+## Fourteenth Warm Up
+
+### Questions
+
+Say you have an array for which the i element is the price of a given stock on day i.
+
+If you were only permitted to complete at most one transaction
+(i.e., buy one and sell one share of the stock), design an algorithm to find the
+**maximum** profit.
+
+**Note that you cannot sell a stock before you buy one.**
+
+ - Example 1:
+   
+
+       Input: [7,1,5,3,6,4] Output: 5 
+
+   ##### Explanation: 
+   Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+            Not 7-1 = 6, as selling price needs to be larger than buying price.
+            
+ - Example 2:
+   
+
+       Input: [7,6,4,3,1] Output: 0 
+
+   ##### Explanation: 
+   In this case, no transaction is done, i.e. max profit = 0.
+
+
