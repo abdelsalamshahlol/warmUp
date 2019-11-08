@@ -1,8 +1,12 @@
 // There is a special keyboard with all keys in a single row.
 // ​
-// Given a string keyboard of length 26 indicating the layout of the keyboard (indexed from 0 to 25), initially your finger is at index 0. To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index i to index j is |i - j|.
+// Given a string keyboard of length 26 indicating the layout of the keyboard 
+// (indexed from 0 to 25), initially your finger is at index 0. To type a character,
+// you have to move your finger to the index of the desired character. 
+// The time taken to move your finger from index i to index j is |i - j|.
 // ​
-// You want to type a string word. Write a function to calculate how much time it takes to type it with one finger.
+// You want to type a string word. Write a function to calculate how much time 
+//	it takes to type it with one finger.
 // ​
  
 // ​
@@ -12,6 +16,7 @@
 // Output: 4
 // Explanation: The index moves from 0 to 2 to write 'c' then to 1 to write 'b' then to 0 again to write 'a'.
 // Total time = 2 + 1 + 1 = 4. 
+
 // Example 2:
 // ​
 // Input: keyboard = "pqrstuvwxyzabcdefghijklmno", word = "leetcode"
@@ -27,6 +32,41 @@
 
 // ​
 // ​
-// var calculateTime = function(keyboard, word) {
-    
-// };
+
+clear();
+
+//The index of the char in the keyboard is the time 
+// going back from or to another char is the other time
+// i-j gives time
+// Take note previous index at each letter when you iterate through the string
+
+var calculateTime = function(keyboard, word) {
+    var wordArr = word.split('');
+    var result = 0;
+    var currentIndex = 0;
+    var prevIndex = 0;
+
+    console.log(wordArr)
+    wordArr.forEach(function(val, i) {
+        var indexAtKey = keyboard.indexOf(val);
+
+        if (indexAtKey >= 0) {
+            console.log({
+                val,
+                indexAtKey
+            })
+            currentIndex = prevIndex;
+            prevIndex = indexAtKey;
+            result += Math.abs((currentIndex - prevIndex));
+//             console.log({result,currentIndex,prevIndex})
+//             console.log(currentIndex, prevIndex)
+        }
+    });
+    return result;
+};
+
+var keyboard = "abcdefghijklmnopqrstuvwxyz"
+  , word = "cba";
+
+console.log(calculateTime(keyboard, word))
+console.log(calculateTime('pqrstuvwxyzabcdefghijklmno', 'leetcode'))
