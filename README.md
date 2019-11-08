@@ -316,3 +316,51 @@ You can use each character in text at most once. Return the **maximum** number o
 > 1 <= text.length <= 10^4
 
 Text consists of **lower case** English letters only.
+
+
+## Seventeenth Warm Up
+
+### Questions
+
+ There is a special keyboard with all keys in a single row.
+ ​
+ Given a string keyboard of length 26 indicating the layout of the keyboard (indexed from 0 to 25), initially your finger is at index 0. 
+ 
+To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index i to index j is 
+```javascript
+ |i - j|
+ // where: index i and index j
+ ```
+ ​
+You want to type a string word. Write a function to calculate how much time it takes to type it with one finger.
+ 
+
+#### Example 1:
+ 
+ ##### Input: 
+ ```javascript
+ keyboard = "abcdefghijklmnopqrstuvwxyz", word = "cba"
+ // Output: 4
+ ```
+
+**Explanation**: The index moves from 0 to 2 to write 'c' then to 1 to write 'b' then to 0 again to write 'a'. 
+
+`Total time = 2 + 1 + 1 = 4`. 
+
+#### Example 2:
+ ##### Input: 
+
+ ```javascript
+ keyboard = "pqrstuvwxyzabcdefghijklmno", word = "leetcode"
+ // Output: 73
+ ```
+
+ ​
+ **Constraints:**
+ ​
+
+ 1. keyboard.length == 26  
+ 2. keyboard contains each English lowercase
+ 3. letter exactly once in some order.  
+ 4. 1 <= word.length <= 10^4 
+ 5. word[i] is an English lowercase letter.

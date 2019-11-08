@@ -30,43 +30,33 @@
 // 1 <= word.length <= 10^4
 // word[i] is an English lowercase letter.
 
-// ​
-// ​
-
 clear();
 
-//The index of the char in the keyboard is the time 
-// going back from or to another char is the other time
-// i-j gives time
-// Take note previous index at each letter when you iterate through the string
+/* 
+   The index of the character in the keyboard is the time 
+   going back from or to another char is the other time.
+   | i - j | = gives time;
+   Take note previous index at each letter when you iterate through the string
+*/
 
 var calculateTime = function(keyboard, word) {
-    var wordArr = word.split('');
-    var result = 0;
-    var currentIndex = 0;
-    var prevIndex = 0;
+    if (keyboard.length === 26 && word.length > 0 && word.length < Math.pow(10, 4)) {
+        var wordArr = word.split('');
+        var result = 0;
+        var currentIndex = 0;
+        var prevIndex = 0;
 
-    console.log(wordArr)
-    wordArr.forEach(function(val, i) {
-        var indexAtKey = keyboard.indexOf(val);
+        wordArr.forEach(function(val, i) {
+            var indexAtKey = keyboard.indexOf(val.toLowerCase());
 
-        if (indexAtKey >= 0) {
-            console.log({
-                val,
-                indexAtKey
-            })
-            currentIndex = prevIndex;
-            prevIndex = indexAtKey;
-            result += Math.abs((currentIndex - prevIndex));
-//             console.log({result,currentIndex,prevIndex})
-//             console.log(currentIndex, prevIndex)
-        }
-    });
-    return result;
+            if (indexAtKey >= 0) {
+                currentIndex = prevIndex;
+                prevIndex = indexAtKey;
+                result += Math.abs((currentIndex - prevIndex));
+            }
+        });
+        return result;
+    }
+
+    return 'Invalid input';
 };
-
-var keyboard = "abcdefghijklmnopqrstuvwxyz"
-  , word = "cba";
-
-console.log(calculateTime(keyboard, word))
-console.log(calculateTime('pqrstuvwxyzabcdefghijklmno', 'leetcode'))
