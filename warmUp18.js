@@ -10,3 +10,24 @@
 
 // input   =  "aaaaaaaaaaaa"
 // result  =  "123456789101112"
+
+
+var mysteryFunction = function(str) {
+    var letters = {};
+    var splitStr = str.split('');
+    var result = '';
+
+    splitStr.forEach(function(val, key) {
+        if (letters[val] !== undefined) {
+            letters[val] = letters[val] + 1;
+        } else {
+            letters[val] = 1;
+        }
+        result += letters[val];
+    });
+
+    return result;
+}
+
+console.log(mysteryFunction('Hello, World!'), mysteryFunction('Hello, World!') === '1112111121311')
+console.log(mysteryFunction('aaaaaaaaaaaa'), mysteryFunction('aaaaaaaaaaaa') === '123456789101112')
